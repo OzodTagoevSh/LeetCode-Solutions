@@ -1,6 +1,5 @@
 class Solution {
     public boolean isHappy(int n) {
-        if(n == 1 || n == 7) return true;
         while(n / 10 != 0) {
             int helper = n;
             n = 0;

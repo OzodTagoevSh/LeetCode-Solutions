@@ -13,23 +13,21 @@ class Solution {
         if(head==null || head.next==null) return head;
         ListNode help = head;
         int size = 0;
-        while(help!=null) {
+        while(help.next!=null) {
             size++;
             help = help.next;
-        }        
-        if(size < k) k = k % size;
-        k = size-k;
+        } 
+        size++;
+        k = size - k % size;
         if(k==0 || k==size) return head;
-        help = head;               
-        while(k>1 && help!=null) {
-            help = help.next;
+        ListNode slow = head;
+        while(k>1 && slow!=null) {
+            slow = slow.next;
             k--;
         }
-        ListNode cut = help.next;
-        help.next = null;
-        ListNode newHead = cut;
-        while(cut.next!=null) cut=cut.next;
-        cut.next = head;
-        return newHead;
+        ListNode ans=slow.next;
+        slow.next = null;
+        help.next = head;
+        return ans;
     }
 }

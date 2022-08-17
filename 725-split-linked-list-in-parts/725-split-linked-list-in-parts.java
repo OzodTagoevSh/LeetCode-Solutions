@@ -20,18 +20,15 @@ class Solution {
         if(size/k>0) {
             int n=size/k, rem=size%k;           
             for(int i=0; i<k; i++) {
-                int j=1;
+                int j=1, l=n;
                 ListNode helper = head;
                 answer[i]=helper;
                 if(i<rem) {
-                    while(j++<n+1 && helper!=null) {
-                        helper=helper.next;                    
-                    }
-                } else {
-                    while(j++<n && helper!=null) {
-                        helper=helper.next;                    
-                    }
-                }                
+                    l++;
+                }  
+                while(j++<l && helper!=null) {
+                    helper=helper.next;                    
+                }
                 head = helper.next;
                 helper.next = null;
             }           
